@@ -1,1 +1,33 @@
+#int for number
+#bigint for big number and phone no
+#float for (4.000) number
+ #double for (2.12456789) number
+#char() for one word 
+#varchar() for many word
+#text for text
+#date for date
 
+use batch4pm;
+show tables;
+
+create table parson(
+id int,
+name char(10),
+address varchar(50)
+);
+# add columns
+alter table parson add contact int unique;
+alter table parson add (gender char(6),age int check(age>=18),email varchar(50));
+
+insert into parson values(
+101,"rohit","rohini",987654321,"m",21,'abcd@gmail.com'),
+(102,"tanya","burari",346782178,"f",22,'bahse@gmail.com');
+
+alter table parson drop column gender;
+
+alter table parson modify contact bigint; 
+
+
+alter table parson rename mayank;
+ 
+alter table mayank modify name varchar(30);
