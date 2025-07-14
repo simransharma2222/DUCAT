@@ -206,3 +206,161 @@ insert into product_emp_branch values(
 -- 11/7/2025
 
 oaghjk
+
+create database company1;
+use	company1;
+
+show databases;
+
+create table branch(
+branch_id int,
+branch_name varchar(50),
+location varchar(50)
+);
+
+drop table branch;	
+
+create table branch(
+branch_id int primary key,
+branch_name varchar(50),
+location varchar(50)
+);
+
+desc branch;
+
+insert into branch values(
+01,"management branch","delhi");
+
+
+insert into branch values
+(02,"head office","delhi"),
+(03,"mumbai","andheri");
+
+
+create table department(
+dep_id int primary key,
+dep_name  varchar(50),
+branch_id int,
+constraint foreign key(branch_id) references branch(branch_id)
+);
+ 
+insert into department values(
+ 101,"hr",01),
+ (102,"finance",02),
+ (103,"as","03"),
+ (104,"ad","02"),
+ (105,"ab","01");
+
+create table employee
+(
+e_id int primary key,
+e_name varchar(30),
+d_o_j date,
+salary float,
+dep_id int,
+constraint foreign key(dep_id) references department(dep_id)
+);
+
+insert into employee values(1001,"sunil",'2020-05-01',28000,103);
+
+
+create table product(
+p_id int primary key,
+p_name varchar(50)
+);
+
+drop table product;
+create table product_emp_branch(
+id int primary key,
+branch_id int,
+e_id int,
+constraint foreign key(branch_id) references branch(branch_id),
+constraint foreign key(e_id) references employee(e_id)
+);
+select * from product_emp_branch;
+#int for number
+#bigint for big number and phone no
+#float for (4.000) number
+ #double for (2.12456789) number
+#char() for one word 
+#varchar() for many word
+#text for text
+#date for date
+
+
+-- 10/7/2025
+select * from department;
+
+select * from branch;
+
+create table product(
+p_id int primary key,
+p_name varchar(50),
+branch_id int,
+constraint foreign key(branch_id) references branch(branch_id)
+);
+
+drop table product_emp_branch;
+
+insert into product values(1,"asd",02);
+
+create table product_emp_branch(
+start_date date,
+p_id int,
+e_id int,
+constraint foreign key(p_id) references product(p_id),
+constraint foreign key(e_id) references employee(e_id)
+);
+
+insert into product_emp_branch values(
+'2022-04-02',1,1001);
+
+#11-07-2025
+
+create database mydb;
+use mydb;
+
+create table employee(
+e_id int primary key,
+e_name varchar(50),
+gender char(2) not null,
+age int check(age>=18),
+address varchar(50) default("delhi"),
+contact bigint,
+salary float
+);
+
+desc employee;
+
+insert into employee values(1001,"mr.a","m","18","mumbai",7896541230,52610.10);
+insert into employee(e_id,gender) values(1002,"f");
+
+use entities;
+
+Select * from teachers;
+
+use batch4pm;
+show tables;
+
+create table parson(
+id int,
+name char(10),
+address varchar(50)
+);
+# add columns
+alter table parson add contact int unique;
+alter table parson add (gender char(6),age int check(age>=18),email varchar(50));
+
+insert into parson values(
+101,"rohit","rohini",987654321,"m",21,'abcd@gmail.com'),
+(102,"tanya","burari",346782178,"f",22,'bahse@gmail.com');
+
+alter table parson drop column gender;
+
+alter table parson modify contact bigint; 
+
+
+alter table parson rename mayank;
+ 
+alter table mayank modify name varchar(30);
+
